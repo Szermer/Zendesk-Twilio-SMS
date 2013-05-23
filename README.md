@@ -24,7 +24,7 @@ Add a user named "SMS User" to your account
  * Log back in to Zendesk with a user that has administration privileges.
  * *Gear > People (found under "Manage")*
  * Find the "SMS User", click "edit"
- * On the left, change the Role to: "Agent"
+ * On the left, change the Role to: "Administrator"
 
 Create a new Heroku app
 -----------------------------
@@ -61,7 +61,7 @@ Set up your .env file
 
  5. Create a dedicated "SMS User" in ZenDesk, 
     set the values for ZENDESK_USERNAME and ZENDESK_PASSWORD
-    to the credentials for that user (MUST BE AN ADMIN USER, NOT THE SMS AGENT).
+    to the credentials for that user (MUST BE THE ADMIN SMS AGENT).
 
 
 Push to and configure Heroku:
@@ -102,7 +102,7 @@ Create a new SMS Target in Zendesk
    Title: Outbound SMS target
    URL:
 
-        http://your-app.example.com/outgoing
+        http://your-heroku-app.example.com/outgoing
 
    * Method: POST
    * Attribute Name: Extra
