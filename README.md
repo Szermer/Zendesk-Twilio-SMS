@@ -61,7 +61,7 @@ Set up your .env file
 
  5. Create a dedicated "SMS User" in ZenDesk, 
     set the values for ZENDESK_USERNAME and ZENDESK_PASSWORD
-    to the credentials for that user.
+    to the credentials for that user (MUST BE AN ADMIN USER, NOT THE SMS AGENT).
 
 
 Push to and configure Heroku:
@@ -71,7 +71,7 @@ Push to and configure Heroku:
 
         foreman start
 
-    If you don't get any errors then:
+    If you don't get any errors, Control+C to stop listening, then:
 
  2. Configure your Heroku app with the settings from above
 
@@ -104,9 +104,10 @@ Create a new SMS Target in Zendesk
 
         http://your-app.example.com/outgoing
 
-   Method: POST
-   Attribute Name: Extra
-   Basic Authentication: (leave blank)
+   * Method: POST
+   * Attribute Name: Extra
+   * Basic Authentication: (leave blank)
+
  * Leave the dropdown set to "Test Target"
  * Click "Submit"
  * Make sure you get a message that starts with "The message was successfully sent."
@@ -116,7 +117,7 @@ Create a new SMS Target in Zendesk
 Create Triggers in Zendesk
 --------------------------
 
- * *Gear > Triggers (found under "Business Rules")*
+ * Gear > Triggers (found under "Business Rules")*
  * Click "add trigger"
  * Give the trigger the title: "SMS user on Ticket Update".
  * Configure this trigger to meet all the following conditions:
@@ -124,7 +125,7 @@ Create Triggers in Zendesk
    * Comment is: Present, and requester can see the comment
    * Current user: is not: "SMS User"
  * Configure this trigger to perform these actions:
-   * Notify target: Outbound SMS target
+   * Notify target: Send Twilio SMS
    * This field supports Dynamic Content:
 
         {
